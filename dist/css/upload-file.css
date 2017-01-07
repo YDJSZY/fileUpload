@@ -20,7 +20,7 @@ div.upload-file .remove-file{
     border-radius: 30px;
     border:1px solid #000;
     text-align: center;
-    line-height: 30px;
+    line-height: 26px;
     color: #000;
     text-shadow: 0 1px 0 #fff;
     opacity: 0.2;
@@ -28,6 +28,20 @@ div.upload-file .remove-file{
     top: 10px;
 }
 
+div.upload-file .tip{
+    font-size: 16px;
+}
+
 div.upload-file .remove-file:hover{
-    color: #767676;
+    background-color: #d9534f;
+    color: #ffffff;
+    opacity:1;
+    border:none;
+}
+
+div.upload-file .file-img{
+    display: none;
+    max-width: 100%;
+    max-height: 400px;
+    margin: 0 auto;
 }

@@ -3,55 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="uploadFile.css" type="text/css">
+    <link rel="stylesheet" href="dist/css/upload-file.css" type="text/css">
 </head>
 <body>
 <button id="btn">上传</button>
 <div style="" id="myFile"></div>
-<script type="text/javascript" src="uploadFile.js"></script>
+<script type="text/javascript" src="dist/js/upload-file.js"></script>
 <script>
-    /*var btn = document.getElementById("btn");
-    var selectFile = document.getElementById("selectFile");
-    var myFiles = document.getElementById("myFile")
-    btn.onclick = function () {
-        console.log(myFiles.files)
-        /!*var blob = new Blob([myFiles.files[0]],{type:"text/plain"});
-        if(window.FileReader) {
-            var fr = new FileReader();
-            fr.readAsText(blob);
-            fr.onload = function () {
-                console.log(this.result)
-            }
-        }*!/
-    }
-    selectFile.onclick = function () {
-        if(myFiles){
-            myFiles.click();
-        }
-    }
-    selectFile.addEventListener("dragenter", dragenter, false);
-    selectFile.addEventListener("dragover", dragover, false);
-    selectFile.addEventListener("drop", drop, false);
-    function dragenter(e) {
-        e.stopPropagation();
-        e.preventDefault();
-    }
-
-    function dragover(e) {
-        e.stopPropagation();
-        e.preventDefault();
-    }
-    function drop(e) {
-        e.stopPropagation();
-        e.preventDefault();
-
-        var dt = e.dataTransfer;
-        var files = dt.files;
-        console.log(files)
-        //handleFiles(files);
-    }*/
+    var btn = document.getElementById("btn");
     var uploadFile = new UploadFile("myFile")
-
+    btn.onclick = function () {
+        var myFile = uploadFile.getFiles();
+        console.log(myFile)
+    }
 </script>
 </body>
 </html>
