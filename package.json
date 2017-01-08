@@ -2,7 +2,7 @@
   "name": "file-upload",
   "version": "1.0.0",
   "description": "",
-  "main": "uploadFile.js",
+  "main": "./dist/js/uploadFile.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

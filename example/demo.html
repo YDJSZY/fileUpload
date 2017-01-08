@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../dist/css/upload-file.min.css" type="text/css">
+</head>
+<body>
+<div id="myFile"></div>
+<button id="btn">点击获取文件</button>
+<p>文件名称:<em id="fileName"></em></p>
+<script type="text/javascript" src="../dist/js/upload-file.min.js"></script>
+<script>
+    var btn = document.getElementById("btn");
+    var uploadFile = new UploadFile("myFile");
+    btn.onclick = function () {
+        var myFile = uploadFile.getFiles();
+        if(!myFile) return;
+        document.getElementById("fileName").textContent = myFile.name;
+    }
+</script>
+</body>
+</html>
