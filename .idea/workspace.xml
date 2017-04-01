@@ -279,15 +279,23 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1483690177508</updated>
+<<<<<<< Updated upstream
       <workItem from="1483690178805" duration="6702000" />
       <workItem from="1483779666381" duration="8527000" />
       <workItem from="1483802200455" duration="802000" />
       <workItem from="1483858343176" duration="971000" />
+=======
+      <workItem from="1483690178805" duration="6743000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< Updated upstream
     <option name="totallyTimeSpent" value="17002000" />
+=======
+    <option name="totallyTimeSpent" value="6743000" />
+>>>>>>> Stashed changes
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="768" extended-state="0" />

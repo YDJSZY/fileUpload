@@ -12,11 +12,12 @@
 <script type="text/javascript" src="../dist/js/upload-file.min.js"></script>
 <script>
     var btn = document.getElementById("btn");
-    var uploadFile = new UploadFile("myFile");
+    var uploadFile = new UploadFile("myFile",true);
     btn.onclick = function () {
         var myFile = uploadFile.getFiles();
+        console.log(myFile)
         if(!myFile) return;
-        document.getElementById("fileName").textContent = myFile.name;
+        document.getElementById("fileName").textContent = myFile[0].name;
     }
 </script>
 </body>

@@ -6,7 +6,7 @@
     typeof define === 'function' && define.amd ? define(factory) :
             (global.UploadFile = factory());
 }(this,function () {
-    var UploadFile = function (id) {
+    var UploadFile = function (id,multiple) {
         this.fileTarget = document.getElementById(id);
         this.inputFile = document.createElement("input");
         this.inputFile.type = "file";
@@ -26,6 +26,10 @@
         this.fileImg.setAttribute("class","file-img");
         this.fileTarget.appendChild(this.fileImg);
         this.files = [];
+        this.multiple = multiple;
+        if(multiple){
+            this.inputFile.multiple = "multiple";
+        }
         this.render();
     };
 
@@ -55,23 +59,29 @@
             e.stopPropagation();
             e.preventDefault();
             var dt = e.dataTransfer;
-            self.files = [dt.files[0]];
+            self.files = dt.files;
             selectFileCallBack()
         }
 
         function selectFileCallBack (files) {
-            self.files = files && files.target.files.length>0 ? [files.target.files[0]] : self.files;
+            self.files = files && files.target.files.length>0 ? files.target.files : self.files;
             if(self.files.length==0) return;
-            if(self.files[0].type.indexOf("image")==-1){
-                var filename = self.files[0].name;
-                if(filename.length>30) filename = filename.substr(0,30)+"...";
-                self.tip.textContent = filename;
+            var tipContent;
+            if(self.files[0].type.indexOf("image")==-1){/*不是图片*/
+                if(self.files.length>1){
+                    tipContent = "已选择"+self.files.length+"个文件";
+                }else{
+                    tipContent = self.files[0].name;
+                    if(tipContent.length>30) tipContent = tipContent.substr(0,30)+"...";
+                }
+                self.tip.textContent = tipContent;
                 self.fileImg.style.display = "none";
                 self.tip.style.display = "block";
             }else{
                 if(window.FileReader) {
                     var oFReader = new FileReader();
                     oFReader.onloadend = function(e) {
+                        console.log(e.target.result)
                         self.fileImg.src = e.target.result;
                         self.fileImg.style.display = "block";
                     };
@@ -84,7 +94,7 @@
 
         this.removeFileEle.addEventListener("click",function (e){
             window.event? window.event.cancelBubble = true : e.stopPropagation();
-            self.files.length = 0;
+            self.files = undefined;
             self.tip.textContent = self.tipOriginalContent;
             self.tip.style.display = "block";
             self.removeFileEle.style.display = "none";
@@ -92,8 +102,14 @@
         },false)
     }
 
+    UploadFile.prototype.createImg = function () {
+        var img = document.createElement("img");
+        img.setAttribute("class","file-img");
+        return img;
+    }
+
     UploadFile.prototype.getFiles = function () {
-        return this.files[0];
+        return this.files;
     };
 
     return UploadFile;
